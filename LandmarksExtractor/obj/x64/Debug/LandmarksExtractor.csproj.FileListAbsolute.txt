@@ -1,0 +1,17 @@
+C:\Users\muril\source\repos\Landmarks_Extractor\LandmarksExtractor\LandmarksExtractor\obj\x64\Debug\LandmarksExtractor.csprojAssemblyReference.cache
+C:\Users\muril\source\repos\Landmarks_Extractor\LandmarksExtractor\LandmarksExtractor\obj\x64\Debug\MainWindow.g.cs
+C:\Users\muril\source\repos\Landmarks_Extractor\LandmarksExtractor\LandmarksExtractor\obj\x64\Debug\App.g.cs
+C:\Users\muril\source\repos\Landmarks_Extractor\LandmarksExtractor\LandmarksExtractor\obj\x64\Debug\LandmarksExtractor_MarkupCompile.cache
+C:\Users\muril\source\repos\Landmarks_Extractor\LandmarksExtractor\LandmarksExtractor\obj\x64\Debug\LandmarksExtractor_MarkupCompile.lref
+C:\Users\muril\source\repos\Landmarks_Extractor\LandmarksExtractor\LandmarksExtractor\bin\x64\Debug\LandmarksExtractor.exe.config
+C:\Users\muril\source\repos\Landmarks_Extractor\LandmarksExtractor\LandmarksExtractor\bin\x64\Debug\LandmarksExtractor.exe
+C:\Users\muril\source\repos\Landmarks_Extractor\LandmarksExtractor\LandmarksExtractor\bin\x64\Debug\LandmarksExtractor.pdb
+C:\Users\muril\source\repos\Landmarks_Extractor\LandmarksExtractor\LandmarksExtractor\bin\x64\Debug\libpxcclr.cs.dll
+C:\Users\muril\source\repos\Landmarks_Extractor\LandmarksExtractor\LandmarksExtractor\obj\x64\Debug\MainWindow.baml
+C:\Users\muril\source\repos\Landmarks_Extractor\LandmarksExtractor\LandmarksExtractor\obj\x64\Debug\LandmarksExtractor.g.resources
+C:\Users\muril\source\repos\Landmarks_Extractor\LandmarksExtractor\LandmarksExtractor\obj\x64\Debug\LandmarksExtractor.Properties.Resources.resources
+C:\Users\muril\source\repos\Landmarks_Extractor\LandmarksExtractor\LandmarksExtractor\obj\x64\Debug\LandmarksExtractor.csproj.GenerateResource.cache
+C:\Users\muril\source\repos\Landmarks_Extractor\LandmarksExtractor\LandmarksExtractor\obj\x64\Debug\LandmarksExtractor.csproj.CoreCompileInputs.cache
+C:\Users\muril\source\repos\Landmarks_Extractor\LandmarksExtractor\LandmarksExtractor\obj\x64\Debug\LandmarksExtractor.csproj.CopyComplete
+C:\Users\muril\source\repos\Landmarks_Extractor\LandmarksExtractor\LandmarksExtractor\obj\x64\Debug\LandmarksExtractor.exe
+C:\Users\muril\source\repos\Landmarks_Extractor\LandmarksExtractor\LandmarksExtractor\obj\x64\Debug\LandmarksExtractor.pdb
