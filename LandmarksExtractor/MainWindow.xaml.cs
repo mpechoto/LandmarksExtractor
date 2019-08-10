@@ -23,16 +23,11 @@ namespace LandmarksExtractor
         private PXCMFaceData faceData;
         private string landmarks = null;
 
-
-        private string time = DateTime.Now.ToString("M_d_hh_mm_ss");
-        //private string output_folder = @"C:\Users\pedro\source\repos\HelloLandmarks\output\";
-        private string output_folder = null;//@"C:\Release\Records\output\";
+        private string time = DateTime.Now.ToString("M_d_hh_mm_ss");        
+        private string output_folder = null;
         private string output_file = null;
-        //private string input_folder = @"C:\Users\pedro\source\repos\HelloLandmarks\input\";
-        private string input_folder = null; //= @"C:\Release\Records\Record_1_@28-11-2018_22-30\";
-        List<string> dirs;
-        //private string input_folder = @"C:\Release\Records\Record_2_@29-11-2018_12-17\";
-        private string input_file = null;
+        private string input_folder = null; 
+        List<string> dirs;     
 
         DateTime startTime;
         private int frameIndex;
@@ -54,9 +49,7 @@ namespace LandmarksExtractor
 
         private void ProcessingThread()
         {
-            //int video_number;
-
-            foreach (var d in dirs)
+            foreach (var d in dirs)//For each directory, extract all landmarks from all videos
             {
                 string summary = null;
 
@@ -66,36 +59,15 @@ namespace LandmarksExtractor
                     List<string> fileList = new List<string>(Directory.GetFiles(d, "*.rssdk"));
                     foreach (var input_file in fileList)
                     {
-                        int lostFrames = 0;
-                        System.Console.WriteLine(input_file);
-                        //for (video_number = 1; video_number <= 30; video_number++)
-                        //{
-                        // Instantiate and initialize the SenseManager
+                        int lostFrames = 0;                        
                         senseManager = PXCMSenseManager.CreateInstance();
-
-                        /*PXCMCaptureManager captureMgr = senseManager.captureManager;                
-
-                        if (captureMgr == null)
-                        {
-                            throw new Exception("PXCMCaptureManager null");
-                        }*/
-
-
-                        //input_file = input_folder + "video" + video_number + ".rssdk";
-                        //input_file = input_folder + "video2_new.rssdk";
-
                         // Recording mode: true
                         // Playback mode: false
                         // Settings for playback mode (read rssdk files and extract landmarks)
                         senseManager.captureManager.SetFileName(input_file, false);
-                        //captureMgr.SetFileName(input_file, false);
-
                         senseManager.captureManager.SetRealtime(false);
-                        //senseManager.captureManager.SetPause(false);
-
-                        //PXCMCapture.Device device = captureMgr.QueryDevice();
                         nframes = senseManager.captureManager.QueryNumberOfFrames();
-
+                        //Update in realtime the current extraction
                         Application.Current.Dispatcher.BeginInvoke(new Action(() =>
                         {
                             textBox2.Text = nframes.ToString();
@@ -116,8 +88,6 @@ namespace LandmarksExtractor
 
                         // This string stores all data before saving to csv file
                         landmarks = null;
-                        //landmarks += "User ID" + ";" + "Frame Index" + ";" + "Time Stamp" + ";" + "landmarkIndex" + ";" + "X" + ";" + "Y" + ";" + "Z" + '\n';
-
                         // Start AcquireFrame/ReleaseFrame loop
                         while (senseManager.AcquireFrame(true) >= pxcmStatus.PXCM_STATUS_NO_ERROR)
                         {
@@ -150,23 +120,18 @@ namespace LandmarksExtractor
                                         PXCMFaceData.LandmarkPoint[] landmarkPoints;
                                         landmarkData.QueryPoints(out landmarkPoints);
                                         
-                                        //textBox1.Text = frameIndex.ToString();
-
                                         Application.Current.Dispatcher.BeginInvoke(new Action(() => textBox1.Text = frameIndex.ToString()));
 
                                         landmarks += input_file.Split('\\').Last() + ";" + i + ";" + frameIndex + ";" + frameTimeStamp + ";"; // Begin line with frame info
 
                                         for (int j = 0; j < landmarkPoints.Length; j++) // Writes landmarks coordinates along the line 
                                         {
-                                            //get world coordinate
+                                            //get world coordinates
                                             landmarks += landmarkPoints[j].world.x.ToString() + ";" + landmarkPoints[j].world.y.ToString() + ";" + landmarkPoints[j].world.z.ToString() + ";";
                                             if (j % 100 == 0)
                                                 WriteToFile(d); // After 100 frames, writes to file and empties landmarks string
                                         }
-
                                         landmarks += '\n'; // Breaks line after the end of the frame coordinates
-                                                           //Console.WriteLine(landmarks);
-                                                           //landmarks += "--------------------------" + '\n';
                                     }
                                 }
                             }
@@ -246,13 +211,8 @@ namespace LandmarksExtractor
                 string caption = "Missing root folder";
                 WinForms.MessageBoxButtons buttons = WinForms.MessageBoxButtons.OK;
                 WinForms.DialogResult result;
-
                 // Displays the MessageBox.
-                result = WinForms.MessageBox.Show(message, caption, buttons);
-               // if (result == System.Windows.Forms.DialogResult.OK)
-                //{
-                //    ChooseFolder();
-                //}
+                result = WinForms.MessageBox.Show(message, caption, buttons);               
             }
             else
             {
@@ -264,7 +224,6 @@ namespace LandmarksExtractor
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             var folderBrowserDialog1 = new WinForms.FolderBrowserDialog();
-
             // Show the FolderBrowserDialog.
             WinForms.DialogResult result = folderBrowserDialog1.ShowDialog();
             if (result == WinForms.DialogResult.OK)
@@ -273,15 +232,12 @@ namespace LandmarksExtractor
                 textBox5.Text = folderName;
                 input_folder = folderName;
                 dirs = new List<string>(Directory.EnumerateDirectories(folderName));
-                //foreach (var d in dirs)
-                //System.Console.WriteLine(d);
             }
         }
 
         private void OutputButton_Click(object sender, RoutedEventArgs e)
         {
             var folderBrowserDialog1 = new WinForms.FolderBrowserDialog();
-
             // Show the FolderBrowserDialog.
             WinForms.DialogResult result = folderBrowserDialog1.ShowDialog();
             if (result == WinForms.DialogResult.OK)
@@ -289,9 +245,6 @@ namespace LandmarksExtractor
                 string folderName = folderBrowserDialog1.SelectedPath;
                 textBox4.Text = folderName;
                 output_folder = folderName;
-                //dirs = new List<string>(Directory.EnumerateDirectories(folderName));
-                //foreach (var d in dirs)
-                //System.Console.WriteLine(d);
             }
         }
     }
